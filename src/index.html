@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Finance Calculator</title>
+  </head>
+  <body>
+    <div class="content">
+      <div class="top">
+        Finance Calculator
+      </div>
+      <div class="bottom">
+        <nav>
+          <ul>
+            <li><a href="/overview">Overview</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="/person">Person</a></li>
+          </ul>
+        </nav>
+        <div ng-view></div>
+      </div>
+    </div>
+  </body>
+  <script src="./index.ts"></script>
+</html>

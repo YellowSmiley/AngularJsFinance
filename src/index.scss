@@ -1,0 +1,16 @@
+.css-form input.ng-invalid.ng-touched {
+  background-color: #fa787e;
+}
+
+.css-form input.ng-valid.ng-touched {
+  background-color: #78fa89;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  .bottom {
+    display: flex;
+    flex-direction: row;
+  }
+}

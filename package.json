@@ -1,0 +1,19 @@
+{
+  "name": "AngularJsFinance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/YellowSmiley/AngularJsFinance.git",
+  "author": "Michael Smith",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-route": "^1.7.9"
+  },
+  "devDependencies": {
+    "sass": "^1.23.7",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  }
+}
