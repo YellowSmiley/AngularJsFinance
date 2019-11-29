@@ -2,7 +2,7 @@ import * as angular from "angular";
 import ngRoute from "angular-route";
 
 // export const Person =
-export default angular.module("person", []).component("person", {
+export default angular.module("person", [ngRoute]).component("person", {
   template: "Component {{$ctrl.name + $ctrl.id}}!",
   // templateUrl: "person.html",
   controller: [
