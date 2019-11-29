@@ -1,5 +1,10 @@
 import * as angular from "angular";
 
-angular.module("overview", ["ngRoute"]).component("overview", {
-  templateUrl: "../views/overview.html"
+// export const Overview =
+export default angular.module("overview", []).component("overview", {
+  // templateUrl: "../views/overview.html"
+  template: "Component {{$ctrl.name}}!",
+  controller: function GreetUserController() {
+    this.name = "overview";
+  }
 });

@@ -13,14 +13,19 @@
         Finance Calculator
       </div>
       <div class="bottom">
-        <nav>
+        <nav class="side-nav">
           <ul>
             <li><a href="/overview">Overview</a></li>
             <li><a href="/account">Account</a></li>
             <li><a href="/person">Person</a></li>
           </ul>
         </nav>
-        <div ng-view></div>
+        <!-- <div ng-view></div> -->
+        <div class="main-content">
+          <overview></overview>
+          <account></account>
+          <person></person>
+        </div>
       </div>
     </div>
   </body>

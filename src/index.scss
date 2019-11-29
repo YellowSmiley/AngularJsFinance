@@ -12,5 +12,9 @@
   .bottom {
     display: flex;
     flex-direction: row;
+    .main-content {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
