@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Finance Calculator</title>
+    <script src="./app.module.ts"></script>
   </head>
   <body>
     <div class="content">
@@ -20,14 +21,13 @@
             <li><a href="/person">Person</a></li>
           </ul>
         </nav>
-        <!-- <div ng-view></div> -->
         <div class="main-content">
-          <overview></overview>
+          <div ng-view></div>
+          <!-- <overview></overview>
           <account></account>
-          <person></person>
+          <person></person> -->
         </div>
       </div>
     </div>
   </body>
-  <script src="./index.ts"></script>
 </html>
