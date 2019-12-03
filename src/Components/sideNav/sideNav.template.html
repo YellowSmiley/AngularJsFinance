@@ -1,0 +1,20 @@
+<nav class="side-nav">
+  <ul>
+    <li><h1>Navigation</h1></li>
+    <li>
+      <h2><a href="#!overview">Overview</a></h2>
+    </li>
+    <li>
+      <h2><a href="#!people">People</a></h2>
+    </li>
+    <li ng-repeat="person in people">
+      <h3><a href="#!person/{{person.id}}">{{person.name}}</a></h3>
+    </li>
+    <li>
+      <h2><a href="#!accounts">Accounts</a></h2>
+    </li>
+    <li ng-repeat="account in accounts">
+      <h3><a href="#!account/{{account.id}}">{{account.name}}</a></h3>
+    </li>
+  </ul>
+</nav>

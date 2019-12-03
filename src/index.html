@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Finance Calculator</title>
-    <script src="./app.module.ts"></script>
+    <script src="./app/app.module.ts"></script>
   </head>
   <body>
     <div class="content">
@@ -16,26 +16,7 @@
         </div>
       </header>
       <div class="middle">
-        <nav class="side-nav" ng-controller="NavController">
-          <ul>
-            <li><h1>Navigation</h1></li>
-            <li>
-              <h2><a href="#!overview">Overview</a></h2>
-            </li>
-            <li>
-              <h2><a href="#!people">People</a></h2>
-            </li>
-            <li ng-repeat="person in people">
-              <h2><a href="#!person/{{person.id}}">{{person.name}}</a></h2>
-            </li>
-            <li>
-              <h2><a href="#!accounts">Accounts</a></h2>
-            </li>
-            <li ng-repeat="account in accounts">
-              <h2><a href="#!account/{{account.id}}">{{account.name}}</a></h2>
-            </li>
-          </ul>
-        </nav>
+        <side-nav></side-nav>
         <div class="main-content">
           <div ng-view></div>
         </div>
