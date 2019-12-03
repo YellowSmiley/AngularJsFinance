@@ -1,13 +1,15 @@
 import * as angular from "angular";
-import ngRoute from "angular-route";
 import "./account.scss";
+import accounts from "../accounts/accounts.module";
+import { IScope } from "angular";
+import { AccountController } from "./account.controller";
 
-interface AccountControllerScope extends ng.IScope {
-  master: Account;
-  account: Account;
-  update: (account: Account) => void;
-  reset: () => void;
-}
+// interface AccountControllerScope extends ng.IScope {
+//   master: Account;
+//   account: Account;
+//   update: (account: Account) => void;
+//   reset: () => void;
+// }
 
 interface IIncomeExpense {
   id: number;
@@ -16,16 +18,16 @@ interface IIncomeExpense {
   notes: string;
 }
 
-function IncomeController($scope: AccountControllerScope) {
-  $scope.master = {} as Account;
-  $scope.update = function(account: Account) {
-    $scope.master = angular.copy(account);
-  };
-  $scope.reset = function() {
-    $scope.account = angular.copy($scope.master);
-  };
-  $scope.reset();
-}
+// function IncomeController($scope: AccountControllerScope) {
+//   $scope.master = {} as Account;
+//   $scope.update = function(account: Account) {
+//     $scope.master = angular.copy(account);
+//   };
+//   $scope.reset = function() {
+//     $scope.account = angular.copy($scope.master);
+//   };
+//   $scope.reset();
+// }
 
 export class Account {
   public id: number;
@@ -54,16 +56,8 @@ export class Account {
   }
 }
 
-export default angular
-  .module("account", [ngRoute])
-  .component("account", {
-    template: require("./account.template.html"),
-    controller: [
-      "$routeParams",
-      function AccountController($routeParams: ng.route.IRouteParamsService) {
-        this.name = "account";
-        this.id = $routeParams.id;
-      }
-    ]
-  })
-  .controller("IncomeController", ["$scope", IncomeController]);
+export default angular.module("account", [accounts.name]).component("account", {
+  template: require("./account.template.html"),
+  controller: ["$scope", "$routeParams", "accountsService", AccountController]
+});
+// .controller("IncomeController", ["$scope", IncomeController]);
