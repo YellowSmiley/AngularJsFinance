@@ -11,10 +11,12 @@
     <div class="content">
       <header>
         <h1>Finance Calculator</h1>
-        <div ng-controller="AngularWorkingCtrl" class="right">{{working}}</div>
+        <div ng-controller="AngularWorkingController" class="right">
+          {{working}}
+        </div>
       </header>
       <div class="middle">
-        <nav class="side-nav">
+        <nav class="side-nav" ng-controller="NavController">
           <ul>
             <li><h1>Navigation</h1></li>
             <li>

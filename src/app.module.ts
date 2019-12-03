@@ -1,11 +1,17 @@
-import angular from "angular";
+import angular, { IScope } from "angular";
 import ngRoute from "angular-route";
 import account from "./Components/account/account.module";
+import { Account } from "./Components/account/account.module";
 import overview from "./Components/overview/overview.module";
 import person from "./Components/person/person.module";
 import people from "./Components/people/people.module";
 import accounts from "./Components/accounts/accounts.module";
 import "./index.scss";
+import { IAccountsServiceModule } from "./Components/accounts/accounts.service";
+
+interface INavControllerScope extends IScope {
+  accounts: Account[];
+}
 
 angular
   .module("app", [
@@ -38,6 +44,18 @@ angular
         .otherwise("/overview");
     }
   ])
-  .controller("AngularWorkingCtrl", function AngularWorkingCtrl($scope) {
+  .controller("NavController", [
+    "$scope",
+    "accountsService",
+    function(
+      $scope: INavControllerScope,
+      accountsService: IAccountsServiceModule
+    ) {
+      $scope.accounts = accountsService.accounts;
+    }
+  ])
+  .controller("AngularWorkingController", function AngularWorkingController(
+    $scope
+  ) {
     $scope.working = "AngularJS working!";
   });
