@@ -60,4 +60,3 @@ export default angular.module("account", [accounts.name]).component("account", {
   template: require("./account.template.html"),
   controller: ["$scope", "$routeParams", "accountsService", AccountController]
 });
-// .controller("IncomeController", ["$scope", IncomeController]);

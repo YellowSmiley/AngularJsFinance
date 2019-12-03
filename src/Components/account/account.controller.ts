@@ -4,7 +4,8 @@ import { Account } from "./account.module";
 
 interface IAccountControllerScope extends IScope {
   account: Account;
-  save: () => void;
+  addIncome: () => void;
+  removeIncome: (id: number) => void;
 }
 
 interface IAccountControllerRouteParamsService
@@ -20,5 +21,15 @@ export function AccountController(
   $scope.account = accountsService.accounts.find(
     acc => acc.id === parseInt($routeParams.id)
   );
-  $scope.save = function() {};
+  $scope.addIncome = function() {
+    const { incomes } = $scope.account;
+    const newId: number =
+      incomes.length > 0 ? incomes[incomes.length - 1].id + 1 : 1;
+    incomes.push({ id: newId, name: "", amount: 0, notes: "" });
+  };
+  $scope.removeIncome = function(id) {
+    const { incomes } = $scope.account;
+    const i = incomes.findIndex(acc => acc.id === id);
+    incomes.splice(i, 1);
+  };
 }
