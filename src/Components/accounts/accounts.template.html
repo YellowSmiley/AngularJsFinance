@@ -1,0 +1,33 @@
+<input
+  type="search"
+  ng-model="q"
+  placeholder="Filter accounts..."
+  aria-label="Filter accounts"
+/>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gross (£)</th>
+      <th>Net (£)</th>
+      <th>Total Expenses (£)</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="account in accounts | filter:q as results">
+      <td><a href="#!account/{{account.id}}">{{account.name}}</a></td>
+      <td>{{account.gross}}</td>
+      <td>{{account.net}}</td>
+      <td>{{account.totalExpenses}}</td>
+      <td><button ng-click="remove(account.id)">Delete</button></td>
+    </tr>
+    <tr ng-if="results.length === 0">
+      <td>No results found...</td>
+    </tr>
+  </tbody>
+</table>
+<button ng-click="add()">Add</button>
+<button ng-click="save()">Save</button>
+<!-- Table with all accounts in -->
+<!-- Ability to add, remove and edit accounts -->

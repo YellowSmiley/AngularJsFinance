@@ -1,3 +1,17 @@
-<div class="Account">
-  <p>{{$ctrl.name + $ctrl.id}}</p>
+<p>{{$ctrl.name + $ctrl.id}}</p>
+<div class="Account" ng-controller="ExampleController">
+  <h1>Income:</h1>
+  <form novalidate>
+    <label>Name: <input type="text" ng-model="account.name"/></label><br />
+    <label>Incomes: <input type="email" ng-model="account.incomes"/></label
+    ><br />
+    <label>Expenses: <input type="email" ng-model="account.expenses"/></label
+    ><br />
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="update(account)" value="Add Income" />
+  </form>
 </div>
+<!-- Table of incomes -->
+<!-- Ability to add, remove and edit incomes -->
+<!-- Table of expenses -->
+<!-- Ability to add, remove and edit expenses -->

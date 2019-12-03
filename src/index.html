@@ -9,25 +9,38 @@
   </head>
   <body>
     <div class="content">
-      <div ng-controller="AngularWorkingCtrl">{{working}}</div>
-      <div class="top">
+      <header>
         <h1>Finance Calculator</h1>
-      </div>
-      <div class="bottom">
+        <div ng-controller="AngularWorkingCtrl" class="right">{{working}}</div>
+      </header>
+      <div class="middle">
         <nav class="side-nav">
           <ul>
             <li><h1>Navigation</h1></li>
-            <li><a href="#!overview">Overview</a></li>
-            <li><h2>People:</h2></li>
-            <li><a href="#!person/1">Person</a></li>
-            <li><h2>Account:</h2></li>
-            <li><a href="#!account/1">Account</a></li>
+            <li>
+              <h2><a href="#!overview">Overview</a></h2>
+            </li>
+            <li>
+              <h2><a href="#!people">People</a></h2>
+            </li>
+            <li ng-repeat="person in people">
+              <h2><a href="#!person/{{person.id}}">{{person.name}}</a></h2>
+            </li>
+            <li>
+              <h2><a href="#!accounts">Accounts</a></h2>
+            </li>
+            <li ng-repeat="account in accounts">
+              <h2><a href="#!account/{{account.id}}">{{account.name}}</a></h2>
+            </li>
           </ul>
         </nav>
         <div class="main-content">
           <div ng-view></div>
         </div>
       </div>
+      <footer>
+        <small>Mike Smith - MIT Licensed</small>
+      </footer>
     </div>
   </body>
 </html>

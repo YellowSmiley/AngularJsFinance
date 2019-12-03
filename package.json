@@ -6,6 +6,8 @@
   "author": "Michael Smith",
   "license": "MIT",
   "dependencies": {
+    "@types/angular": "^1.6.57",
+    "@types/angular-route": "^1.7.0",
     "@types/node": "^12.12.14",
     "angular": "^1.7.9",
     "angular-route": "^1.7.9"
