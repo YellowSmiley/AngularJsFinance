@@ -1,6 +1,6 @@
 import { IScope } from "angular";
 import { Account } from "../account/account.module";
-import { IAccountsServiceModule } from "./accounts.service";
+import { IAccountsService } from "./accounts.service";
 
 export interface IAccountsControllerScope extends IScope {
   accounts: Account[];
@@ -11,7 +11,7 @@ export interface IAccountsControllerScope extends IScope {
 
 export function accountsController(
   $scope: IAccountsControllerScope,
-  accountsService: IAccountsServiceModule
+  accountsService: IAccountsService
 ) {
   $scope.accounts = accountsService.accounts;
 

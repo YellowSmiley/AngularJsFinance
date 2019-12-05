@@ -1,7 +1,7 @@
 import { IModule, ICacheObject } from "angular";
 import { Account } from "../account/account.module";
 
-export interface IAccountsServiceModule extends IModule {
+export interface IAccountsService extends IModule {
   accounts: Account[];
   remove: (id: number) => void;
   add: () => void;

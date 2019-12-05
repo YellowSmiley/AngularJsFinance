@@ -1,33 +1,10 @@
 import * as angular from "angular";
 import "./account.scss";
 import accounts from "../accounts/accounts.module";
-import { IScope } from "angular";
+import incomeExpenseTable, {
+  IIncomeExpense
+} from "../incomeExpenseTable/incomeExpenseTable.module";
 import { AccountController } from "./account.controller";
-
-// interface AccountControllerScope extends ng.IScope {
-//   master: Account;
-//   account: Account;
-//   update: (account: Account) => void;
-//   reset: () => void;
-// }
-
-interface IIncomeExpense {
-  id: number;
-  name: string;
-  amount: number;
-  notes: string;
-}
-
-// function IncomeController($scope: AccountControllerScope) {
-//   $scope.master = {} as Account;
-//   $scope.update = function(account: Account) {
-//     $scope.master = angular.copy(account);
-//   };
-//   $scope.reset = function() {
-//     $scope.account = angular.copy($scope.master);
-//   };
-//   $scope.reset();
-// }
 
 export class Account {
   public id: number;
@@ -56,7 +33,16 @@ export class Account {
   }
 }
 
-export default angular.module("account", [accounts.name]).component("account", {
-  template: require("./account.template.html"),
-  controller: ["$scope", "$routeParams", "accountsService", AccountController]
-});
+export default angular
+  .module("account", [accounts.name, incomeExpenseTable.name])
+  .component("account", {
+    template: require("./account.template.html"),
+    controller: [
+      "$scope",
+      "$routeParams",
+      "accountsService",
+      "incomeTableFactory",
+      "expenseTableFactory",
+      AccountController
+    ]
+  });

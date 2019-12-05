@@ -9,29 +9,7 @@
       placeholder="Filter income(s)..."
       aria-label="Filter income(s)"
     />
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Notes</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          ng-repeat="income in account.incomes | filter:incomeFilter as incomeResults"
-        >
-          <td>{{income.name}}</td>
-          <td>{{income.amount}}</td>
-          <td>{{income.notes}}</td>
-          <td><button ng-click="removeIncome(income.id)">Delete</button></td>
-        </tr>
-        <tr ng-if="incomeResults.length === 0">
-          <td>No results found...</td>
-        </tr>
-      </tbody>
-    </table>
+    <income-expense-table></income-expense-table>
     <br />
     <!-- <label>Expenses: <input type="email" ng-model="account.expenses"/></label
     ><br /> -->
