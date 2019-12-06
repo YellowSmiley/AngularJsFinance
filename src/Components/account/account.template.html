@@ -3,20 +3,9 @@
   <form novalidate>
     <label>Name: <input type="text" ng-model="account.name"/></label><br />
     <h2>Income(s):</h2>
-    <input
-      type="search"
-      ng-model="incomeFilter"
-      placeholder="Filter income(s)..."
-      aria-label="Filter income(s)"
-    />
-    <income-expense-table></income-expense-table>
+    <income-expense-table entries="account.incomes"></income-expense-table>
     <br />
-    <!-- <label>Expenses: <input type="email" ng-model="account.expenses"/></label
-    ><br /> -->
-    <input type="submit" ng-click="addIncome()" value="Add Income" />
+    <h2>Expense(s):</h2>
+    <income-expense-table entries="account.expenses"></income-expense-table>
   </form>
 </div>
-<!-- Table of incomes -->
-<!-- Ability to add, remove and edit incomes -->
-<!-- Table of expenses -->
-<!-- Ability to add, remove and edit expenses -->

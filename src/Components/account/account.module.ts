@@ -37,12 +37,5 @@ export default angular
   .module("account", [accounts.name, incomeExpenseTable.name])
   .component("account", {
     template: require("./account.template.html"),
-    controller: [
-      "$scope",
-      "$routeParams",
-      "accountsService",
-      "incomeTableFactory",
-      "expenseTableFactory",
-      AccountController
-    ]
+    controller: ["$scope", "$routeParams", "accountsService", AccountController]
   });

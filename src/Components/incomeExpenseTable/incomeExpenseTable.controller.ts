@@ -1,29 +1,26 @@
 import { IScope } from "angular";
-import { Account } from "../account/account.module";
 import { IIncomeExpenseTableFactory } from "./incomeExpenseTable.factory";
 
+export interface IIncomeExpense {
+  id: number;
+  name: string;
+  amount: number;
+  notes: string;
+}
+
 interface IIncomeExpenseTableControllerScope extends IScope {
-  addExpense: (account: Account) => void;
-  removeExpense: (account: Account, id: number) => void;
-  addIncome: (account: Account) => void;
-  removeIncome: (account: Account, id: number) => void;
+  add: (entries: IIncomeExpense[]) => void;
+  remove: (entries: IIncomeExpense[], id: number) => void;
 }
 
 export function IncomeExpenseTableController(
   $scope: IIncomeExpenseTableControllerScope,
-  expenseTableFactory: IIncomeExpenseTableFactory,
-  incomeTableFactory: IIncomeExpenseTableFactory
+  incomeExpenseTableFactory: IIncomeExpenseTableFactory
 ) {
-  $scope.addExpense = function(account) {
-    expenseTableFactory.add(account);
+  $scope.add = function(entries) {
+    incomeExpenseTableFactory.add(entries);
   };
-  $scope.removeExpense = function(account, id) {
-    expenseTableFactory.remove(account, id);
-  };
-  $scope.addIncome = function(account) {
-    incomeTableFactory.add(account);
-  };
-  $scope.removeIncome = function(account, id) {
-    incomeTableFactory.remove(account, id);
+  $scope.remove = function(entries, id) {
+    incomeExpenseTableFactory.remove(entries, id);
   };
 }

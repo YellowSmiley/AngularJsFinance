@@ -1,3 +1,9 @@
+<input
+  type="search"
+  ng-model="q"
+  placeholder="Filter by Name..."
+  aria-label="Filter by Name"
+/>
 <table>
   <thead>
     <tr>
@@ -8,16 +14,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr
-      ng-repeat="income in account.incomes | filter:incomeFilter as incomeResults"
-    >
-      <td>{{income.name}}</td>
-      <td>{{income.amount}}</td>
-      <td>{{income.notes}}</td>
-      <td><button ng-click="removeIncome(income.id)">Delete</button></td>
+    <tr ng-repeat="entry in $ctrl.entries | filter:q as results">
+      <td>{{entry.name}}</td>
+      <td>{{entry.amount}}</td>
+      <td>{{entry.notes}}</td>
+      <td>
+        <button ng-click="remove($ctrl.entries, entry.id)">Delete</button>
+      </td>
     </tr>
-    <tr ng-if="incomeResults.length === 0">
+    <tr ng-if="results.length === 0">
       <td>No results found...</td>
     </tr>
   </tbody>
 </table>
+<input type="submit" ng-click="add($ctrl.entries)" value="Add" />
