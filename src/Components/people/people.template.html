@@ -1,3 +1,33 @@
-<p>{{$ctrl.name}}</p>
-<!-- Table with all people in -->
-<!-- Ability to add, remove and edit people -->
+<h1>People:</h1>
+<input
+  type="search"
+  ng-model="q"
+  placeholder="Filter people..."
+  aria-label="Filter people"
+/>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Accounts #</th>
+      <th>Gross (£)</th>
+      <th>Total Expenses (£)</th>
+      <th>Net (£)</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="person in people | filter:q as results">
+      <td><a href="#!person/{{person.id}}">{{person.name}}</a></td>
+      <td>{{person.accounts.length}}</td>
+      <td>{{person.gross}}</td>
+      <td>{{person.totalExpenses}}</td>
+      <td>{{person.net}}</td>
+      <td><button ng-click="remove(person.id)">Delete</button></td>
+    </tr>
+    <tr ng-if="results.length === 0">
+      <td>No results found...</td>
+    </tr>
+  </tbody>
+</table>
+<button ng-click="add()">Add</button>

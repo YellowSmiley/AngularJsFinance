@@ -9,9 +9,8 @@ export interface IAccountsService extends IModule {
 }
 
 export function accountsService(accountsCache: ICacheObject) {
-  const accountCache = accountsCache.get("accounts") as Account[];
-  this.accounts = !!accountCache ? accountCache : [];
-  //   this.accounts = [new Account(1, "New Account", [], [])];
+  const accounts = accountsCache.get("accounts") as Account[];
+  this.accounts = !!accounts ? accounts : [];
   this.remove = function(id) {
     const i = this.accounts.findIndex(acc => acc.id === id);
     this.accounts.splice(i, 1);

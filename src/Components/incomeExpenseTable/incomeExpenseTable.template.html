@@ -15,9 +15,31 @@
   </thead>
   <tbody>
     <tr ng-repeat="entry in $ctrl.entries | filter:q as results">
-      <td>{{entry.name}}</td>
-      <td>{{entry.amount}}</td>
-      <td>{{entry.notes}}</td>
+      <td>
+        <input
+          type="text"
+          ng-model="entry.name"
+          placeholder="Name..."
+          aria-label="Name"
+        />
+      </td>
+      <td>
+        <input
+          type="number"
+          ng-model="entry.amount"
+          placeholder="Amount..."
+          aria-label="Amount"
+        />
+      </td>
+      <td>
+        <textarea
+          rows="2"
+          cols="20"
+          ng-model="entry.notes"
+          placeholder="Notes..."
+          aria-label="Notes"
+        ></textarea>
+      </td>
       <td>
         <button ng-click="remove($ctrl.entries, entry.id)">Delete</button>
       </td>

@@ -1,7 +1,24 @@
-<div class="Account">
+<div class="Account" ng-if="!!account.id">
   <h1>Account ({{account.name}}):</h1>
   <form novalidate>
     <label>Name: <input type="text" ng-model="account.name"/></label><br />
+    <h2>Totals:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Gross (£)</th>
+          <th>Expenses (£)</th>
+          <th>Net (£)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{account.gross}}</td>
+          <td>{{account.totalExpenses}}</td>
+          <td>{{account.net}}</td>
+        </tr>
+      </tbody>
+    </table>
     <h2>Income(s):</h2>
     <income-expense-table entries="account.incomes"></income-expense-table>
     <br />
@@ -9,3 +26,6 @@
     <income-expense-table entries="account.expenses"></income-expense-table>
   </form>
 </div>
+<p ng-if="!account.id">
+  This account is not found!
+</p>

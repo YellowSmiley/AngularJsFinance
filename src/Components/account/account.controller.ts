@@ -4,10 +4,6 @@ import { Account } from "./account.module";
 
 interface IAccountControllerScope extends IScope {
   account: Account;
-  addIncome: () => void;
-  removeIncome: (id: number) => void;
-  addExpense: () => void;
-  removeExpense: (id: number) => void;
 }
 
 interface IAccountControllerRouteParamsService

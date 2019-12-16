@@ -1,10 +1,18 @@
 import * as angular from "angular";
-import ngRoute from "angular-route";
 import "./people.scss";
+import { ICacheFactoryService } from "angular";
+import { peopleService } from "./people.service";
+import { peopleController } from "./people.controller";
 
-export default angular.module("people", [ngRoute]).component("people", {
-  template: require("./people.template.html"),
-  controller: function PeopleController() {
-    this.name = "people";
-  }
-});
+function peopleCache($cacheFactory: ICacheFactoryService) {
+  return $cacheFactory("peopleCache");
+}
+
+export default angular
+  .module("people", [])
+  .factory("peopleCache", ["$cacheFactory", peopleCache])
+  .service("peopleService", ["peopleCache", peopleService])
+  .component("people", {
+    template: require("./people.template.html"),
+    controller: ["$scope", "peopleService", peopleController]
+  });

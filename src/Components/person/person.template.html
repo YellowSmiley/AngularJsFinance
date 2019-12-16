@@ -1,4 +1,64 @@
-<p>{{$ctrl.name + $ctrl.id}}</p>
-<!-- Person details -->
-<!-- Person's accounts -->
-<!-- Ability to add, remove -->
+<div class="Person" ng-if="!!person.id">
+  <h1>Person ({{person.name}}):</h1>
+  <form novalidate>
+    <label>Name: <input type="text" ng-model="person.name"/></label><br />
+    <h2>Totals:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Accounts #</th>
+          <th>Gross (£)</th>
+          <th>Expenses (£)</th>
+          <th>Net (£)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{person.account.length}}</td>
+          <td>{{person.gross}}</td>
+          <td>{{person.totalExpenses}}</td>
+          <td>{{person.net}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Account(s):</h2>
+    <input
+      type="search"
+      ng-model="q"
+      placeholder="Filter accounts..."
+      aria-label="Filter accounts"
+    />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gross (£)</th>
+          <th>Total Expenses (£)</th>
+          <th>Net (£)</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="account in person.accounts | filter:q as results">
+          <td><a href="#!account/{{account.id}}">{{account.name}}</a></td>
+          <td>{{account.gross}}</td>
+          <td>{{account.totalExpenses}}</td>
+          <td>{{account.net}}</td>
+          <td><button ng-click="removeAccount(account.id)">Remove</button></td>
+        </tr>
+        <tr ng-if="results.length === 0">
+          <td>No results found...</td>
+        </tr>
+      </tbody>
+    </table>
+    <select ng-model="selectedAccount">
+      <option ng-repeat="account in accounts" value="{{account.id}}">
+        {{account.name}}
+      </option>
+    </select>
+    <button ng-click="allocateAccount(selectedAccount)">Allocate</button>
+  </form>
+</div>
+<p ng-if="!person.id">
+  This person is not found!
+</p>
