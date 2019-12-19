@@ -13,11 +13,11 @@ angular
   .module("app", [
     ngRoute,
     account.name,
-    overview.name,
     person.name,
     people.name,
     accounts.name,
-    sideNav.name
+    sideNav.name,
+    overview.name
   ])
   .config(["$routeProvider", appConfig])
   .controller("AngularWorkingController", function AngularWorkingController(

@@ -1,10 +1,8 @@
 import * as angular from "angular";
-import ngRoute from "angular-route";
 import "./overview.scss";
+import { OverviewController } from "./overview.controller";
 
-export default angular.module("overview", [ngRoute]).component("overview", {
+export default angular.module("overview", []).component("overview", {
   template: require("./overview.template.html"),
-  controller: function OverviewController() {
-    this.name = "overview";
-  }
+  controller: ["$scope", "peopleService", OverviewController]
 });

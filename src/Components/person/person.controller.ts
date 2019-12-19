@@ -24,7 +24,7 @@ export function PersonController(
 ) {
   $scope.accounts = accountsService.accounts;
   $scope.person = peopleService.people.find(
-    acc => acc.id === parseInt($routeParams.id)
+    per => per.id === parseInt($routeParams.id)
   );
   $scope.allocateAccount = function(id) {
     const account = $scope.accounts.find(acc => acc.id === parseInt(id));
