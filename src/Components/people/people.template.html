@@ -4,6 +4,7 @@
   ng-model="q"
   placeholder="Filter people..."
   aria-label="Filter people"
+  class="table-search"
 />
 <table>
   <thead>
@@ -26,7 +27,7 @@
       <td><button ng-click="remove(person.id)">Delete</button></td>
     </tr>
     <tr ng-if="results.length === 0">
-      <td>No results found...</td>
+      <td colspan="6">No results found...</td>
     </tr>
   </tbody>
 </table>

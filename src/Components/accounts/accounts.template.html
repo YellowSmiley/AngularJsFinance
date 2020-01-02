@@ -4,6 +4,7 @@
   ng-model="q"
   placeholder="Filter accounts..."
   aria-label="Filter accounts"
+  class="table-search"
 />
 <table>
   <thead>
@@ -24,8 +25,8 @@
       <td><button ng-click="remove(account.id)">Delete</button></td>
     </tr>
     <tr ng-if="results.length === 0">
-      <td>No results found...</td>
+      <td colspan="5">No results found...</td>
     </tr>
   </tbody>
 </table>
-<button ng-click="add()">Add</button>
+<button ng-click="add()" class="table-button">Add</button>

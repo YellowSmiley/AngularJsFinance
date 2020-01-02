@@ -3,6 +3,7 @@
   ng-model="q"
   placeholder="Filter by Name..."
   aria-label="Filter by Name"
+  class="table-search"
 />
 <table>
   <thead>
@@ -45,7 +46,7 @@
       </td>
     </tr>
     <tr ng-if="results.length === 0">
-      <td>No results found...</td>
+      <td colspan="4">No results found...</td>
     </tr>
   </tbody>
 </table>
