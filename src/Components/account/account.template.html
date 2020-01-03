@@ -1,24 +1,21 @@
 <div class="Account" ng-if="!!account.id">
-  <h1>Account ({{account.name}}):</h1>
   <form novalidate>
-    <label>Name: <input type="text" ng-model="account.name"/></label><br />
+    <label class="title-input-label">Name: <input class="title-input" type="text" ng-model="account.name"/></label>
     <h2>Totals:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Gross (£)</th>
-          <th>Expenses (£)</th>
-          <th>Net (£)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{account.gross}}</td>
-          <td>{{account.totalExpenses}}</td>
-          <td>{{account.net}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panels">
+      <div class="panel">
+          <p class="title">Gross</p class="title">
+          <p class="value">£{{account.gross}}</p class="value">
+      </div>
+      <div class="panel">
+          <p class="title">Expenses</p class="title">
+          <p class="value">£{{account.totalExpenses}}</p class="value">
+      </div>
+      <div class="panel">
+        <p class="title">Net</p class="title">
+        <p class="value">£{{account.net}}</p class="value">
+      </div>
+    </div>
     <h2>Income(s):</h2>
     <income-expense-table entries="account.incomes"></income-expense-table>
     <br />

@@ -1,28 +1,28 @@
 <div class="Person" ng-if="!!person.id">
-  <h1>Person ({{person.name}}):</h1>
+  <label class="title-input-label">Name: <input class="title-input" type="text" ng-model="person.name"/></label>
   <form novalidate>
-    <label>Name: <input type="text" ng-model="person.name"/></label><br />
     <h2>Totals:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Accounts #</th>
-          <th>Gross (£)</th>
-          <th>Expenses (£)</th>
-          <th>Net (£)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{person.accounts.length}}</td>
-          <td>{{person.gross}}</td>
-          <td>{{person.totalExpenses}}</td>
-          <td>{{person.net}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="panels">
+      <div class="panel">
+          <p class="title">Accounts</p>
+          <p class="value">{{person.accounts.length}}</p>
+      </div>
+      <div class="panel">
+          <p class="title">Gross</p class="title">
+          <p class="value">£{{person.gross}}</p class="value">
+      </div>
+      <div class="panel">
+          <p class="title">Expenses</p class="title">
+          <p class="value">£{{person.totalExpenses}}</p class="value">
+      </div>
+      <div class="panel">
+        <p class="title">Net</p class="title">
+        <p class="value">£{{person.net}}</p class="value">
+    </div>
+  </div>
     <h2>Account(s):</h2>
     <input
+      class="table-search"
       type="search"
       ng-model="q"
       placeholder="Filter accounts..."
@@ -44,19 +44,21 @@
           <td>{{account.gross}}</td>
           <td>{{account.totalExpenses}}</td>
           <td>{{account.net}}</td>
-          <td><button ng-click="removeAccount(account.id)">Remove</button></td>
+          <td><button ng-click="removeAccount(account.id)">Unallocate</button></td>
         </tr>
         <tr ng-if="results.length === 0">
           <td colspan="5">No results found...</td>
         </tr>
       </tbody>
     </table>
-    <select ng-model="selectedAccount">
-      <option ng-repeat="account in accounts" value="{{account.id}}">
-        {{account.name}}
-      </option>
-    </select>
-    <button ng-click="allocateAccount(selectedAccount)">Allocate</button>
+    <div class="table-button">
+      <select style="padding: 0.5em;" ng-model="selectedAccount">
+        <option ng-repeat="account in accounts" value="{{account.id}}">
+          {{account.name}}
+        </option>
+      </select>
+      <button ng-click="allocateAccount(selectedAccount)">Allocate</button>
+    </div>
   </form>
 </div>
 <p ng-if="!person.id">

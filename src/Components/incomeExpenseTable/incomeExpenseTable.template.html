@@ -42,7 +42,9 @@
         ></textarea>
       </td>
       <td>
-        <button ng-click="remove($ctrl.entries, entry.id)">Delete</button>
+        <button ng-click="remove($ctrl.entries, entry.id)">
+          Delete
+        </button>
       </td>
     </tr>
     <tr ng-if="results.length === 0">
@@ -50,4 +52,4 @@
     </tr>
   </tbody>
 </table>
-<input type="submit" ng-click="add($ctrl.entries)" value="Add" />
+<button ng-click="add($ctrl.entries)" class="table-button">Add</button>
