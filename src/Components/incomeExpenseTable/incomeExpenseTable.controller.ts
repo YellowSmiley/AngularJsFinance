@@ -13,14 +13,16 @@ interface IIncomeExpenseTableControllerScope extends IScope {
   remove: (entries: IIncomeExpense[], id: number) => void;
 }
 
-export function IncomeExpenseTableController(
-  $scope: IIncomeExpenseTableControllerScope,
-  incomeExpenseTableFactory: IIncomeExpenseTableFactory
-) {
-  $scope.add = function(entries) {
-    incomeExpenseTableFactory.add(entries);
-  };
-  $scope.remove = function(entries, id) {
-    incomeExpenseTableFactory.remove(entries, id);
-  };
+export class IncomeExpenseTableController {
+  constructor(
+    $scope: IIncomeExpenseTableControllerScope,
+    incomeExpenseTableFactory: IIncomeExpenseTableFactory
+  ) {
+    $scope.add = function(entries) {
+      incomeExpenseTableFactory.add(entries);
+    };
+    $scope.remove = function(entries, id) {
+      incomeExpenseTableFactory.remove(entries, id);
+    };
+  }
 }

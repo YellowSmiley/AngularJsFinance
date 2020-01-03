@@ -1,6 +1,6 @@
 import { IScope } from "angular";
-import { Account } from "../account/account.module";
-import { IAccountsService } from "./accounts.service";
+import { Account } from "../account/account.controller";
+import { accountsService } from "./accounts.service";
 
 export interface IAccountsControllerScope extends IScope {
   accounts: Account[];
@@ -9,21 +9,23 @@ export interface IAccountsControllerScope extends IScope {
   save: () => void;
 }
 
-export function accountsController(
-  $scope: IAccountsControllerScope,
-  accountsService: IAccountsService
-) {
-  $scope.accounts = accountsService.accounts;
+export class accountsController {
+  constructor(
+    $scope: IAccountsControllerScope,
+    accountsService: accountsService
+  ) {
+    $scope.accounts = accountsService.accounts;
 
-  $scope.remove = function(id) {
-    accountsService.remove(id);
-  };
+    $scope.remove = function(id) {
+      accountsService.remove(id);
+    };
 
-  $scope.add = function() {
-    accountsService.add();
-  };
+    $scope.add = function() {
+      accountsService.add();
+    };
 
-  $scope.save = function() {
-    accountsService.save();
-  };
+    $scope.save = function() {
+      accountsService.save();
+    };
+  }
 }

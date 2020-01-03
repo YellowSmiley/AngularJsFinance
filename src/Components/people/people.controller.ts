@@ -1,6 +1,6 @@
 import { IScope } from "angular";
-import { IPeopleService } from "./people.service";
-import { Person } from "../person/person.module";
+import { peopleService } from "./people.service";
+import { Person } from "../person/person.controller";
 
 export interface IPeopleControllerScope extends IScope {
   people: Person[];
@@ -8,22 +8,20 @@ export interface IPeopleControllerScope extends IScope {
   add: () => void;
   save: () => void;
 }
+export class peopleController {
+  constructor($scope: IPeopleControllerScope, peopleService: peopleService) {
+    $scope.people = peopleService.people;
 
-export function peopleController(
-  $scope: IPeopleControllerScope,
-  peopleService: IPeopleService
-) {
-  $scope.people = peopleService.people;
+    $scope.remove = function(id) {
+      peopleService.remove(id);
+    };
 
-  $scope.remove = function(id) {
-    peopleService.remove(id);
-  };
+    $scope.add = function() {
+      peopleService.add();
+    };
 
-  $scope.add = function() {
-    peopleService.add();
-  };
-
-  $scope.save = function() {
-    peopleService.save();
-  };
+    $scope.save = function() {
+      peopleService.save();
+    };
+  }
 }

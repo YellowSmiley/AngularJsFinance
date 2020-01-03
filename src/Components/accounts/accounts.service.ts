@@ -1,30 +1,26 @@
-import { IModule, ICacheObject } from "angular";
-import { Account } from "../account/account.module";
+import { ICacheObject } from "angular";
+import { Account } from "../account/account.controller";
 
-export interface IAccountsService extends IModule {
-  accounts: Account[];
-  remove: (id: number) => void;
-  add: () => void;
-  save: () => void;
-}
-
-export function accountsService(accountsCache: ICacheObject) {
-  const accounts = accountsCache.get("accounts") as Account[];
-  this.accounts = !!accounts ? accounts : [];
-  this.remove = function(id) {
+export class accountsService {
+  public accounts: Account[];
+  constructor(private accountsCache: ICacheObject) {
+    const accounts = accountsCache.get("accounts") as Account[];
+    this.accounts = !!accounts ? accounts : [];
+  }
+  public remove(id) {
     const i = this.accounts.findIndex(acc => acc.id === id);
     this.accounts.splice(i, 1);
-  };
+  }
 
-  this.add = function() {
+  public add() {
     const newId: number =
       this.accounts.length > 0
         ? this.accounts[this.accounts.length - 1].id + 1
         : 1;
     this.accounts.push(new Account(newId, "New Account", [], []));
-  };
+  }
 
-  this.save = function() {
-    accountsCache.put("accounts", this.accounts);
-  };
+  public save() {
+    this.accountsCache.put("accounts", this.accounts);
+  }
 }

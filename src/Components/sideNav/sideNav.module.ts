@@ -15,3 +15,5 @@ export default angular
       sideNavController
     ]
   });
+
+//TODO: Remove []

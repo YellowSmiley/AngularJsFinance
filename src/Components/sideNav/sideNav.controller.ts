@@ -1,20 +1,22 @@
 import { IScope } from "angular";
-import { Account } from "../account/account.module";
+import { Account } from "../account/account.controller";
 import "./sideNav.scss";
-import { IAccountsService } from "../accounts/accounts.service";
-import { IPeopleService } from "../people/people.service";
-import { Person } from "../person/person.module";
+import { accountsService } from "../accounts/accounts.service";
+import { peopleService } from "../people/people.service";
+import { Person } from "../person/person.controller";
 
 interface INavControllerScope extends IScope {
   accounts: Account[];
   people: Person[];
 }
 
-export function sideNavController(
-  $scope: INavControllerScope,
-  accountsService: IAccountsService,
-  peopleService: IPeopleService
-) {
-  $scope.accounts = accountsService.accounts;
-  $scope.people = peopleService.people;
+export class sideNavController {
+  constructor(
+    $scope: INavControllerScope,
+    accountsService: accountsService,
+    peopleService: peopleService
+  ) {
+    $scope.accounts = accountsService.accounts;
+    $scope.people = peopleService.people;
+  }
 }
