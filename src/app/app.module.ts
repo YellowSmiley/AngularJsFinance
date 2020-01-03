@@ -19,9 +19,4 @@ angular
     sideNav.name,
     overview.name
   ])
-  .config(["$routeProvider", appConfig])
-  .controller("AngularWorkingController", function AngularWorkingController(
-    $scope
-  ) {
-    $scope.working = "AngularJS working!";
-  });
+  .config(["$routeProvider", appConfig]);
