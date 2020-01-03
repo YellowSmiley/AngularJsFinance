@@ -19,7 +19,6 @@ a {
   }
 }
 table {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
   td,
@@ -36,6 +35,14 @@ table {
     text-align: left;
     background-color: #333;
     color: white;
+  }
+  td {
+    text-align: center;
+    input,
+    textarea {
+      padding: 0.5em;
+      font-size: 1em;
+    }
   }
 }
 .content {
