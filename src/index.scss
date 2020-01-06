@@ -98,7 +98,14 @@ table {
         .title-input {
           font-size: 1em;
           padding: 0.25em;
+          margin-top: 0.5em;
         }
+      }
+      .warning-message {
+        color: black;
+        padding: 0.5em;
+        background-color: #eee;
+        margin: 0;
       }
       .panels {
         display: flex;

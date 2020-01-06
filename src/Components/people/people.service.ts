@@ -5,7 +5,12 @@ export class peopleService {
   public people: Person[];
 
   constructor() {
-    this.people = JSON.parse(localStorage.getItem("people") || "[]");
+    const people = JSON.parse(localStorage.getItem("people") || "[]");
+    this.people = [];
+    people.length > 0 &&
+      people.forEach((per: Person) => {
+        this.people.push(new Person(per.id, per.name, per.accounts));
+      });
   }
 
   public remove(id) {

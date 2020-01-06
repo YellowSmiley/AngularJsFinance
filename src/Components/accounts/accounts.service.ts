@@ -4,8 +4,15 @@ import { Account } from "../account/account.controller";
 export class accountsService {
   public accounts: Account[];
 
-  constructor(private accountsCache: ICacheObject) {
-    this.accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+  constructor() {
+    const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+    this.accounts = [];
+    accounts.length > 0 &&
+      accounts.forEach((acc: Account) => {
+        this.accounts.push(
+          new Account(acc.id, acc.name, acc.incomes, acc.expenses)
+        );
+      });
   }
 
   public remove(id) {
