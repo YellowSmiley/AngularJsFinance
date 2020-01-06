@@ -1,2 +1,2 @@
 # AngularJsFinance
-A basic finance calculator created in AngularJS
+A basic finance calculator created in AngularJS and typescript.
