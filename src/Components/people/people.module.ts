@@ -2,7 +2,7 @@ import * as angular from "angular";
 import "./people.scss";
 import { ICacheFactoryService } from "angular";
 import { peopleService } from "./people.service";
-import { peopleController } from "./people.controller";
+import { PeopleControllerConstructor } from "./people.controller";
 
 function peopleCache($cacheFactory: ICacheFactoryService) {
   return $cacheFactory("peopleCache");
@@ -14,5 +14,5 @@ export default angular
   .service("peopleService", ["peopleCache", peopleService])
   .component("people", {
     template: require("./people.template.html"),
-    controller: ["$scope", "peopleService", peopleController]
+    controller: PeopleControllerConstructor
   });

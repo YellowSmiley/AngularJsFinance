@@ -10,7 +10,7 @@ interface INavControllerScope extends IScope {
   people: Person[];
 }
 
-export class sideNavController {
+class SideNavController {
   constructor(
     $scope: INavControllerScope,
     accountsService: accountsService,
@@ -20,3 +20,10 @@ export class sideNavController {
     $scope.people = peopleService.people;
   }
 }
+
+export const SideNavControllerConstructor = [
+  "$scope",
+  "accountsService",
+  "peopleService",
+  SideNavController
+];

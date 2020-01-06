@@ -51,7 +51,7 @@ export class Person {
   }
 }
 
-export class PersonController {
+class PersonController {
   constructor(
     $scope: IPersonControllerScope,
     $routeParams: IPersonControllerRouteParamsService,
@@ -73,3 +73,11 @@ export class PersonController {
     };
   }
 }
+
+export const PersonControllerConstructor = [
+  "$scope",
+  "$routeParams",
+  "peopleService",
+  "accountsService",
+  PersonController
+];

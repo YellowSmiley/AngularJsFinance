@@ -9,7 +9,7 @@ interface IOverviewControllerScope extends IScope {
   totalNet: () => number;
 }
 
-export class OverviewController {
+class OverviewController {
   constructor($scope: IOverviewControllerScope, peopleService: peopleService) {
     $scope.people = peopleService.people;
     $scope.totalGross = function() {
@@ -26,3 +26,9 @@ export class OverviewController {
     };
   }
 }
+
+export const OverviewControllerConstructor = [
+  "$scope",
+  "peopleService",
+  OverviewController
+];

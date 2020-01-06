@@ -9,7 +9,7 @@ export interface IAccountsControllerScope extends IScope {
   save: () => void;
 }
 
-export class accountsController {
+class AccountsController {
   constructor(
     $scope: IAccountsControllerScope,
     accountsService: accountsService
@@ -29,3 +29,9 @@ export class accountsController {
     };
   }
 }
+
+export const AccountsControllerConstructor = [
+  "$scope",
+  "accountsService",
+  AccountsController
+];

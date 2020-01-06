@@ -1,5 +1,5 @@
 import angular from "angular";
-import { IncomeExpenseTableController } from "./incomeExpenseTable.controller";
+import { IncomeExpenseTableControllerConstructor } from "./incomeExpenseTable.controller";
 import { incomeExpenseTableFactory } from "./incomeExpenseTable.factory";
 
 export default angular
@@ -7,11 +7,7 @@ export default angular
   .factory("incomeExpenseTableFactory", incomeExpenseTableFactory)
   .component("incomeExpenseTable", {
     template: require("./incomeExpenseTable.template.html"),
-    controller: [
-      "$scope",
-      "incomeExpenseTableFactory",
-      IncomeExpenseTableController
-    ],
+    controller: IncomeExpenseTableControllerConstructor,
     bindings: {
       entries: "="
     }

@@ -13,7 +13,7 @@ interface IIncomeExpenseTableControllerScope extends IScope {
   remove: (entries: IIncomeExpense[], id: number) => void;
 }
 
-export class IncomeExpenseTableController {
+class IncomeExpenseTableController {
   constructor(
     $scope: IIncomeExpenseTableControllerScope,
     incomeExpenseTableFactory: IIncomeExpenseTableFactory
@@ -26,3 +26,9 @@ export class IncomeExpenseTableController {
     };
   }
 }
+
+export const IncomeExpenseTableControllerConstructor = [
+  "$scope",
+  "incomeExpenseTableFactory",
+  IncomeExpenseTableController
+];

@@ -38,7 +38,7 @@ export class Account {
   }
 }
 
-export class AccountController {
+class AccountController {
   constructor(
     $scope: IAccountControllerScope,
     $routeParams: IAccountControllerRouteParamsService,
@@ -49,3 +49,10 @@ export class AccountController {
     );
   }
 }
+
+export const AccountControllerConstructor = [
+  "$scope",
+  "$routeParams",
+  "accountsService",
+  AccountController
+];

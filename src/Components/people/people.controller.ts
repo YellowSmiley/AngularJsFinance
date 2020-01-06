@@ -8,7 +8,7 @@ export interface IPeopleControllerScope extends IScope {
   add: () => void;
   save: () => void;
 }
-export class peopleController {
+class PeopleController {
   constructor($scope: IPeopleControllerScope, peopleService: peopleService) {
     $scope.people = peopleService.people;
 
@@ -25,3 +25,9 @@ export class peopleController {
     };
   }
 }
+
+export const PeopleControllerConstructor = [
+  "$scope",
+  "peopleService",
+  PeopleController
+];
