@@ -1,14 +1,22 @@
 import { Person } from "../person/person.controller";
+import { Account } from "../account/account.controller";
 
 export class peopleService {
   public people: Person[];
 
   constructor() {
-    const people = JSON.parse(localStorage.getItem("people") || "[]");
     this.people = [];
+    const people = JSON.parse(localStorage.getItem("people") || "[]");
     people.length > 0 &&
       people.forEach((per: Person) => {
-        this.people.push(new Person(per.id, per.name, per.accounts));
+        const accounts = [];
+        per.accounts.length > 0 &&
+          per.accounts.forEach(acc =>
+            accounts.push(
+              new Account(acc.id, acc.name, acc.incomes, acc.expenses)
+            )
+          );
+        this.people.push(new Person(per.id, per.name, accounts));
       });
   }
 
