@@ -12,15 +12,18 @@ interface IOverviewControllerScope extends IScope {
 class OverviewController {
   constructor($scope: IOverviewControllerScope, peopleService: peopleService) {
     $scope.people = peopleService.people;
+
     $scope.totalGross = function() {
       return $scope.people.reduce((total, person) => total + person.gross, 0);
     };
+
     $scope.totalExpenses = function() {
       return $scope.people.reduce(
         (total, person) => total + person.totalExpenses,
         0
       );
     };
+
     $scope.totalNet = function() {
       return $scope.people.reduce((total, person) => total + person.net, 0);
     };

@@ -59,15 +59,18 @@ class PersonController {
     accountsService: accountsService
   ) {
     $scope.accounts = accountsService.accounts;
+
     $scope.person = peopleService.people.find(
       per => per.id === parseInt($routeParams.id)
     );
+
     $scope.allocateAccount = function(id) {
       const account = $scope.accounts.find(acc => acc.id === parseInt(id));
       if (account) {
         $scope.person.allocateAccount(account);
       }
     };
+
     $scope.removeAccount = function(id) {
       $scope.person.removeAccount(parseInt(id));
     };

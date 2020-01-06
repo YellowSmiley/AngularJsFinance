@@ -16,6 +16,7 @@ export class Account {
   public name: string;
   public incomes: IIncomeExpense[];
   public expenses: IIncomeExpense[];
+
   constructor(
     id: number,
     name: string,
@@ -27,12 +28,15 @@ export class Account {
     this.incomes = incomes;
     this.expenses = expenses;
   }
+
   public get gross() {
     return this.incomes.reduce((total, { amount }) => total + amount, 0);
   }
+
   public get totalExpenses() {
     return this.expenses.reduce((total, { amount }) => total + amount, 0);
   }
+
   public get net() {
     return this.gross - this.totalExpenses;
   }

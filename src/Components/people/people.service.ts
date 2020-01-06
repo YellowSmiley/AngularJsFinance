@@ -1,4 +1,3 @@
-import { ICacheObject } from "angular";
 import { Person } from "../person/person.controller";
 
 export class peopleService {
