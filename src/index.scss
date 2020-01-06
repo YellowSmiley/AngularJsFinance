@@ -63,6 +63,16 @@ table {
       width: 100%;
       margin: 0;
     }
+    button {
+      background: white;
+      border: 0;
+      padding: 0.5em;
+      margin: 0;
+      color: black;
+      &:hover {
+        background-color: #ddd;
+      }
+    }
     .right {
       width: 100%;
       display: flex;

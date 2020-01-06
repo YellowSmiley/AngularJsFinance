@@ -4,9 +4,8 @@ import { Person } from "../person/person.controller";
 export class peopleService {
   public people: Person[];
 
-  constructor(private peopleCache: ICacheObject) {
-    const people = peopleCache.get("people") as Person[];
-    this.people = !!people ? people : [];
+  constructor() {
+    this.people = JSON.parse(localStorage.getItem("people") || "[]");
   }
 
   public remove(id) {
@@ -21,6 +20,6 @@ export class peopleService {
   }
 
   public save() {
-    this.peopleCache.put("people", this.people);
+    localStorage.setItem("people", JSON.stringify(this.people));
   }
 }

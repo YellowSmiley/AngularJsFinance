@@ -5,8 +5,7 @@ export class accountsService {
   public accounts: Account[];
 
   constructor(private accountsCache: ICacheObject) {
-    const accounts = accountsCache.get("accounts") as Account[];
-    this.accounts = !!accounts ? accounts : [];
+    this.accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
   }
 
   public remove(id) {
@@ -23,6 +22,6 @@ export class accountsService {
   }
 
   public save() {
-    this.accountsCache.put("accounts", this.accounts);
+    localStorage.setItem("accounts", JSON.stringify(this.accounts));
   }
 }
