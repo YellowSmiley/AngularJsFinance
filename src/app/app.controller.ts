@@ -1,15 +1,20 @@
 import { IScope } from "angular";
 import { peopleService } from "../Components/people/people.service";
+import { accountsService } from "../Components/accounts/accounts.service";
 
 interface IAppControllerScope extends IScope {
   saveStateToCache: () => void;
 }
 
 class AppController {
-  constructor($scope: IAppControllerScope, peopleService: peopleService) {
+  constructor(
+    $scope: IAppControllerScope,
+    peopleService: peopleService,
+    accountsService: accountsService
+  ) {
     $scope.saveStateToCache = function() {
-      console.log("saveStateToCache");
       peopleService.save();
+      accountsService.save();
     };
   }
 }
@@ -17,5 +22,6 @@ class AppController {
 export const AppControllerConstructor = [
   "$scope",
   "peopleService",
+  "accountsService",
   AppController
 ];

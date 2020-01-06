@@ -3,10 +3,12 @@ import { Person } from "../person/person.controller";
 
 export class peopleService {
   public people: Person[];
+
   constructor(private peopleCache: ICacheObject) {
     const people = peopleCache.get("people") as Person[];
     this.people = !!people ? people : [];
   }
+
   public remove(id) {
     const i = this.people.findIndex(acc => acc.id === id);
     this.people.splice(i, 1);
