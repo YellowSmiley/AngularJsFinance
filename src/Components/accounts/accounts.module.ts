@@ -5,7 +5,7 @@ import { accountsService } from "./accounts.service";
 
 export default angular
   .module("accounts", [])
-  .service("accountsService", [accountsService])
+  .service("accountsService", ["$rootScope", accountsService])
   .component("accounts", {
     template: require("./accounts.template.html"),
     controller: AccountsControllerConstructor

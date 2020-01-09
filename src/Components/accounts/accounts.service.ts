@@ -1,16 +1,18 @@
 import { Account } from "../account/account.controller";
 import { postData, getAll } from "../../Utils/fetchHelper";
+import { IRootScopeService } from "angular";
 
 export class accountsService {
   public accounts: Account[];
 
-  constructor() {
+  constructor($rootScope: IRootScopeService) {
     this.accounts = [];
     const cachedAccounts = JSON.parse(localStorage.getItem("accounts") || "[]");
     if (cachedAccounts.length === 0) {
-      getAll("http://localhost:57111/api/Accounts").then(res =>
-        this.setAccounts(res)
-      );
+      getAll("http://localhost:57111/api/Accounts").then(res => {
+        this.setAccounts(res);
+        $rootScope.$digest();
+      });
       this.accounts.length > 0 &&
         localStorage.setItem("accounts", JSON.stringify(this.accounts));
     } else {
