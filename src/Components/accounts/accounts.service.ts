@@ -1,17 +1,31 @@
 import { Account } from "../account/account.controller";
+import { postData, getAll } from "../../Utils/fetchHelper";
 
 export class accountsService {
   public accounts: Account[];
 
   constructor() {
-    const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
     this.accounts = [];
+    const cachedAccounts = JSON.parse(localStorage.getItem("accounts") || "[]");
+    if (cachedAccounts.length === 0) {
+      getAll("http://localhost:57111/api/Accounts").then(res =>
+        this.setAccounts(res)
+      );
+      this.accounts.length > 0 &&
+        localStorage.setItem("accounts", JSON.stringify(this.accounts));
+    } else {
+      this.setAccounts(cachedAccounts);
+    }
+  }
+
+  private setAccounts(accounts: Account[]) {
     accounts.length > 0 &&
       accounts.forEach((acc: Account) => {
         this.accounts.push(
           new Account(acc.id, acc.name, acc.incomes, acc.expenses)
         );
       });
+    console.log(this.accounts);
   }
 
   public remove(id) {
@@ -29,5 +43,6 @@ export class accountsService {
 
   public save() {
     localStorage.setItem("accounts", JSON.stringify(this.accounts));
+    postData("http://localhost:57111/api/Accounts", this.accounts);
   }
 }
