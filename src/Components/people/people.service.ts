@@ -1,12 +1,27 @@
 import { Person } from "../person/person.controller";
 import { Account } from "../account/account.controller";
+import { IRootScopeService } from "angular";
+import { getAll, postData } from "../../Utils/fetchHelper";
 
 export class peopleService {
   public people: Person[];
 
-  constructor() {
+  constructor($rootScope: IRootScopeService) {
     this.people = [];
-    const people = JSON.parse(localStorage.getItem("people") || "[]");
+    const cachedAccounts = JSON.parse(localStorage.getItem("people") || "[]");
+    if (cachedAccounts.length === 0) {
+      getAll("http://localhost:57111/api/People").then(res => {
+        this.setPeople(res);
+        $rootScope.$digest();
+      });
+      this.people.length > 0 &&
+        localStorage.setItem("people", JSON.stringify(this.people));
+    } else {
+      this.setPeople(cachedAccounts);
+    }
+  }
+
+  private setPeople(people: Person[]) {
     people.length > 0 &&
       people.forEach((per: Person) => {
         const accounts = [];
@@ -33,5 +48,6 @@ export class peopleService {
 
   public save() {
     localStorage.setItem("people", JSON.stringify(this.people));
+    postData("http://localhost:57111/api/People", this.people);
   }
 }

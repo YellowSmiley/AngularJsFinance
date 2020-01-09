@@ -27,7 +27,6 @@ export class accountsService {
           new Account(acc.id, acc.name, acc.incomes, acc.expenses)
         );
       });
-    console.log(this.accounts);
   }
 
   public remove(id) {
